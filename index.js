@@ -2,10 +2,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const useRouter = require('./routes/user')
 //+++++++++++++++++++++++++++++++++
 
 const app = express();
 dotenv.config()
+
+//--------------middle--------
+app.use(express.json())
+
+//--------------Routes-------------------
+app.use('/api/users', useRouter)
 
 
 console.log(typeof(process.env.MONGO_URL))
